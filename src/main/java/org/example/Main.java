@@ -34,7 +34,7 @@ public class Main {
                     productQuantity = s.nextInt();
 
                     addProduct(groceryInventory,productName, productQuantity);
-                    System.out.println("Product Added!");
+
                     System.out.println();
                     break;
 
@@ -59,7 +59,6 @@ public class Main {
                     System.out.print("Enter product name to remove: ");
                     productName = s.next();
                     removeProduct(groceryInventory,productName);
-                    System.out.println("Product removed.");
                     System.out.println();
                     break;
 
@@ -74,15 +73,16 @@ public class Main {
         }
     }
 
-    private static void updateStock(Map<String, Integer> groceryInventory, String productName, int productQuantity) {
+    public static void updateStock(Map<String, Integer> groceryInventory, String productName, int productQuantity) {
         if (groceryInventory.containsKey(productName)){
             groceryInventory.put(productName,productQuantity);
         }else{
             System.out.println(productName + " is not in stock.");
         }
+
     }
 
-    private static void checkProduct(Map<String, Integer> groceryInventory, String productName) {
+    public static void checkProduct(Map<String, Integer> groceryInventory, String productName) {
         if (groceryInventory.containsKey(productName)){
             System.out.println(productName + " is in stock: " + groceryInventory.get(productName));
             System.out.println();
@@ -90,19 +90,19 @@ public class Main {
             System.out.println(productName + " is not in stock.");
             System.out.println();
         }
-
     }
 
-    private static void removeProduct(Map<String, Integer> groceryInventory, String productName) {
+    public static void removeProduct(Map<String, Integer> groceryInventory, String productName) {
         if (groceryInventory.containsKey(productName)){
             groceryInventory.remove(productName);
+            System.out.println("Product removed.");
         }else{
             System.out.println(productName + " is not in stock.");
         }
     }
 
 
-    private static void viewInventory(Map<String, Integer> groceryInventory) {
+    public static void viewInventory(Map<String, Integer> groceryInventory) {
         if (groceryInventory.isEmpty()) {
             System.out.println("Nothing in inventory yet.");
         }else{
@@ -113,13 +113,14 @@ public class Main {
         System.out.println();
     }
 
-    private static void addProduct(Map<String, Integer> groceryInventory, String productName, int productQuantity) {
-        while(productQuantity <= 0){
-            System.out.println("Quantity must be positive");
-            System.out.print("Quantity: ");
-            productQuantity = s.nextInt();
+    public static void addProduct(Map<String, Integer> groceryInventory, String productName, int productQuantity) {
+        if (productQuantity <= 0){
+            System.out.println("Quantity must be positive.");
+        }else{
+            groceryInventory.put(productName, productQuantity);
+            System.out.println("Product Added!");
         }
 
-        groceryInventory.put(productName, productQuantity);
+
     }
 }
