@@ -11,8 +11,8 @@
 ![image info](./output2.png)
 
 ### Part 2:
-Unit Test Output:
+#### Unit Test Output:
 ![image info](./unit_test_output.png)
 
-Test Case Coverage:
+#### Test Case Coverage:
 ![image info](./test_case_coverage.png)
